@@ -20,8 +20,8 @@ let UseRefHook = () => {
         <Fragment>
             <div className="contianer   mt-3 text-center  ">
                 <div className="row">
-                    <div className="col-md-5">
-                        <div className="card-header text-success text-white h4">
+                    <div className="col-md-5 bg-secondary mt-4">
+                        <div className="card-header text-success text-white h4 mt-3">
                             useRef() Example -Basics
                             <br />
                             <img src={img1}
@@ -35,16 +35,17 @@ let UseRefHook = () => {
                         <div className="card-body">
                             <p className="lead text-danger h5">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
                             <input type="submit" value="click me" onClick={click} />
+                            
                         </div>
                     </div>
-
-                    <div className="col-md-7">
-                        <div className="card-header text-secondary text-white h4">
+                    <div className="col-md-1"></div>
+                    <div className="col-md-5 bg-dark">
+                        <div className="card-header text-secondary text-white h4 mt-3">
                             useRef() Example -useCase in realtime
                         </div>
-                        <div className="card-body">
+                        <div className="card-body mt-2">
                             <form className="form-control">
-                                <input type="checkbox" name="terms" onChange={enableBtn} />Accept terms and conditions<br />
+                                <input type="checkbox" name="terms" onChange={enableBtn} />&nbsp;&nbsp;Accept terms and conditions<br />
                                 <button type="submit" ref={refEl} disabled className="btn btn-sm btn-warning">submit</button>
                             </form>
                         </div>
