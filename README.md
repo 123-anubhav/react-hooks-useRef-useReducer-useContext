@@ -251,17 +251,150 @@ src/
 
 ---
 
-## Screenshots
-
-![useReducer Hook Example Screenshot](#)  
-*Example of the component with dynamically updated messages and interactive buttons.*
 
 ---
 
 ---
 
-## Acknowledgments
-- **React Documentation**: For clear and comprehensive guides on `useRef`.
-- **Bootstrap**: Used for styling and responsive design.
+# Context API with `useContext()` in React
+
+This project demonstrates the usage of React's **Context API** with the `useContext()` hook to pass data across components without prop-drilling. The application consists of multiple nested components, with data being passed from a parent component (`MessageTwo`) to a deeply nested child component (`MessageFour`) using `useContext()`.
+
+---
+
+## Table of Contents
+1. [Overview](#overview)
+2. [Technologies Used](#technologies-used)
+3. [File Structure](#file-structure)
+4. [Component Flow](#component-flow)
+5. [How to Run](#how-to-run)
+6. [Key Features](#key-features)
+7. [Code Highlights](#code-highlights)
+
+---
+
+## Overview
+The project demonstrates:
+- How to create a `Context` in React.
+- Providing values to the context.
+- Accessing context values in deeply nested components using the `useContext` hook.
+
+---
+
+## Technologies Used
+- **React** (v18+)
+- **Bootstrap** (for styling)
+
+---
+
+## File Structure
+```
+src/
+├── components/
+│   ├── MessageOne.js    // Parent component
+│   ├── MessageTwo.js    // Passes context value
+│   ├── MessageThree.js  // Intermediary component
+│   ├── MessageFour.js   // Accesses context value
+├── contextdefine.js      // Defines the Context
+├── App.js                // Root component
+└── index.js              // React entry point
+```
+
+---
+
+## Component Flow
+
+### 1. **MessageOne**
+- Entry point of the nested component structure.
+- Renders `MessageTwo` and passes a `wish` prop to it.
+
+### 2. **MessageTwo**
+- Creates a **context provider** (`ContextVal.Provider`).
+- Wraps `MessageThree` within the provider and shares the `wish` value.
+
+### 3. **MessageThree**
+- Acts as an intermediary, rendering `MessageFour`.
+
+### 4. **MessageFour**
+- Reads the `wish` value using the `useContext` hook and displays it.
+
+---
+
+## How to Run
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project folder:
+   ```bash
+   cd context-api-example
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm start
+   ```
+5. Open the application in your browser at `http://localhost:3000`.
+
+---
+
+## Key Features
+- **Context API**: Implements React's context to share data between components.
+- **Modularity**: Components are well-structured and easy to extend.
+- **Dynamic Rendering**: Values passed from the context are dynamically displayed in the UI.
+
+---
+
+## Code Highlights
+
+### Defining Context
+The `contextdefine.js` file defines a `Context` to be used throughout the application:
+```javascript
+import { createContext } from 'react';
+
+let ContextVal = createContext();
+
+export { ContextVal };
+```
+
+### Providing Context
+`MessageTwo` provides the `wish` value to its descendants:
+```javascript
+<ContextVal.Provider value={props}>
+    <MessageThree />
+</ContextVal.Provider>
+```
+
+### Accessing Context
+`MessageFour` consumes the context value using `useContext`:
+```javascript
+const contextReader = useContext(ContextVal);
+
+return (
+    <span>{contextReader.wish}</span>
+);
+```
+
+---
+
+## Example Output
+
+### Initial View
+The application will render the following structure with data passed through the context:
+
+```
+context-api-using useContext() Example
+
+MessageOne
+    MessageTwo
+        hello i m from parent
+            MessageThree
+                MessageFour
+                Comes Value from Parent Component == hello i m from parent
+```
 
 ---
