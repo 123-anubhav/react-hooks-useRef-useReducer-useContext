@@ -120,6 +120,146 @@ Dynamically enables the submit button based on the checkbox state.
 
 ---
 
+# useReducer Hook Example
+
+This project demonstrates the usage of React's `useReducer` hook to manage state transitions in a functional component. The `UseReducerHook` component showcases a simple implementation where a message changes dynamically based on button clicks.
+
+---
+
+## Features
+
+- **State Management**: Uses the `useReducer` hook for better state management in a React functional component.
+- **Dynamic Message Rendering**: Updates the displayed message based on user interaction.
+- **Interactive UI**: Buttons trigger actions that update the state.
+
+---
+
+## Code Overview
+
+The component consists of the following key parts:
+
+### 1. **Initial State**
+
+```javascript
+let initialstate = {
+    message: 'hello'
+};
+```
+
+The initial state is defined as an object containing a `message` property.
+
+### 2. **Reducer Function**
+
+```javascript
+let reducer = (state = initialstate, action) => {
+    switch (action.type) {
+        case 'gm': return { message: 'Good Morning' };
+        case 'ga': return { message: 'Good Afternoon' };
+        case 'ge': return { message: 'Good Evening' };
+        default: return state;
+    }
+};
+```
+
+The `reducer` function takes the current state and an action as arguments. It determines the new state based on the `action.type`.
+
+### 3. **useReducer Hook**
+
+```javascript
+let [state, dispatch] = useReducer(reducer, initialstate);
+```
+
+The `useReducer` hook is used to manage state transitions. It returns the current state and a `dispatch` function to trigger state updates.
+
+### 4. **UI Rendering**
+
+```javascript
+<div className="card-body bg-dark text-center h5">
+    <div className="text-white">{state.message}</div>
+    <button onClick={() => dispatch({ type: 'gm' })} className="btn btn-danger btn-sm">Good Morning</button>
+    <button onClick={() => dispatch({ type: 'ga' })} className="btn btn-success btn-sm">Good Afternoon</button>
+    <button onClick={() => dispatch({ type: 'ge' })} className="btn btn-warning btn-sm">Good Evening</button>
+</div>
+```
+
+The UI displays the current `message` and three buttons. Each button dispatches an action to update the state.
+
+---
+
+## How to Use
+
+1. **Install Dependencies**
+
+   Make sure you have React installed in your project:
+
+   ```bash
+   npm install react react-dom
+   ```
+
+2. **Configure `UseReducerHook`**
+
+   Add the `UseReducerHook` component to your project. Import it in your main `App.jsx` or equivalent file:
+
+   ```javascript
+   import React from "react";
+   import UseReducerHook from "./UseReducerHook";
+
+   function App() {
+       return (
+           <div>
+               <UseReducerHook />
+           </div>
+       );
+   }
+
+   export default App;
+   ```
+
+3. **Run the Application**
+
+   Start your React application:
+
+   ```bash
+   npm start
+   ```
+
+---
+
+## How It Works
+
+- Initially, the message is set to `'hello'`.
+- Clicking the **Good Morning**, **Good Afternoon**, or **Good Evening** buttons dispatches an action (`'gm'`, `'ga'`, or `'ge'`) to the `reducer` function.
+- The `reducer` updates the `message` property in the state, which is then rendered dynamically in the UI.
+
+---
+
+## Dependencies
+
+- **React**: For building the component.
+- **Bootstrap**: For styling buttons and layout (optional but included in the example).
+
+---
+
+## File Structure
+
+```
+src/
+├── UseReducerHook.jsx  # The main component using the useReducer hook
+├── App.jsx             # Root component rendering UseReducerHook
+├── index.js            # Entry point for React application
+```
+
+---
+
+## Screenshots
+
+![useReducer Hook Example Screenshot](#)  
+*Example of the component with dynamically updated messages and interactive buttons.*
+
+---
+
+---
+
 ## Acknowledgments
 - **React Documentation**: For clear and comprehensive guides on `useRef`.
 - **Bootstrap**: Used for styling and responsive design.
