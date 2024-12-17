@@ -33,7 +33,7 @@ let UseRefHook = () => {
                             />
                         </div>
                         <div className="card-body">
-                            <p className="lead text-danger h5">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                            <p className="lead text-danger h5">see the console of browser what happen when you click me</p>
                             <input type="submit" value="click me" onClick={click} />
                             
                         </div>
