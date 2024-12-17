@@ -22,7 +22,7 @@ function App() {
 
             context-api-using useContext() Example
 
-            <MessageOne wish="hello i m from parent" />
+            <MessageOne />
           </div>
         </div>
       </div>
